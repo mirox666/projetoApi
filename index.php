@@ -26,8 +26,15 @@ require_once ("vendor/autoload.php");
                 echo "<hr> {$servico}";
 
                 array_shift($rota);
-                $verboHttp = $_SERVER["REQUEST_METHOD"];// está pegando o verbo HTTP que é o método de envio dos dados, ou seja GET, POST, PUT, DELETE.
-
+                $verboHttp = strtolower( $_SERVER["REQUEST_METHOD"]);// está pegando o verbo HTTP que é o método de envio dos dados, ou seja GET, POST, PUT, DELETE.
+                echo "<hr> {$verboHttp}";
+                try {
+                    array_shift($rota);
+                    $resposta = call_user_func_array(array(new $servico, $verboHttp), $rota);// estamos instânciando dinamicamente a classe produtoController e informando qual método da classe será executado, passando a variável $verboHttp,que será get,post,put,delete.A variável $rota, será utilizada para passar o parâmetro para o método da nossa classe, seria algo como delete(1) ou por exewmplo put(1)
+                    echo "<hr> {$resposta}";
+                } catch (\Exception $erro) {
+                    
+                }
             }
 
         }
