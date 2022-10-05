@@ -1,5 +1,6 @@
 <?php
 header("Content-type: application/json");// Alterando o cabeçalho do documento para ser um arquivo json.
+header("Content-Control-Allow-Origin:*");// Estamos permitindo acesso livre à nossa api.
 require_once ("vendor/autoload.php");
 //use App\controller\ProdutoController;
         //print_r($_GET);

@@ -9,7 +9,7 @@ class Conexao{
     
     public static function getConexao(){
         if(!isset(self::$instancia)){
-            self::$instancia = new \PDO("mysqo:host=localhost;dbname=projeto_api","root","");
+            self::$instancia = new \PDO("mysql:host=localhost;dbname=projeto_api","root","");
         }
         return self::$instancia;
     }
